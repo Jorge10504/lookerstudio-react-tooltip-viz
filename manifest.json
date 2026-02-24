@@ -15,6 +15,7 @@
         "js": "index.js",
         "css": "index.css"
       },
+      "config": "config.json",
       "data": {
         "dimensions": [
           {
