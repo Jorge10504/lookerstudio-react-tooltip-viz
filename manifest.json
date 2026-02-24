@@ -1,0 +1,27 @@
+{
+  "name": "React Tooltip Viz",
+  "organization": "Your Name",
+  "description": "Custom Looker Studio community visualization with React tooltip",
+  "logoUrl": "https://www.gstatic.com/images/branding/product/1x/looker_studio_48dp.png",
+  "supportUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz/issues",
+  "packageUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz",
+  "devMode": true,
+  "components": [
+    {
+      "name": "reactTooltipViz",
+      "description": "A simple viz that shows a custom tooltip on hover",
+      "resource": {
+        "js": "index.js",
+        "css": "index.css"
+      },
+      "data": {
+        "dimensions": [
+          { "name": "label", "description": "Label" }
+        ],
+        "metrics": [
+          { "name": "value", "description": "Value" }
+        ]
+      }
+    }
+  ]
+}

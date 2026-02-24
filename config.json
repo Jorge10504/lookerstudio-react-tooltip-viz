@@ -1,0 +1,24 @@
+{
+  "style": {
+    "sections": [
+      {
+        "name": "tooltip",
+        "displayName": "Tooltip",
+        "properties": [
+          {
+            "name": "bgColor",
+            "displayName": "Background color",
+            "type": "COLOR",
+            "defaultValue": "#111111"
+          },
+          {
+            "name": "textColor",
+            "displayName": "Text color",
+            "type": "COLOR",
+            "defaultValue": "#ffffff"
+          }
+        ]
+      }
+    ]
+  }
+}
