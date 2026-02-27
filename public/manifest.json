@@ -1,16 +1,19 @@
 {
   "name": "React Tooltip Viz",
   "organization": "Jorge",
-  "description": "Custom Looker Studio community visualization with React tooltip",
+  "description": "Product tiles with floating tooltip and modal",
   "logoUrl": "https://www.gstatic.com/images/branding/product/1x/looker_studio_48dp.png",
   "supportUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz/issues",
   "packageUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz",
-  "devMode": true,
+  "version": "1.0.0",
+  "author": {
+    "name": "Jorge Rodriguez"
+  },
   "components": [
     {
       "id": "reactTooltipViz",
       "name": "React Tooltip Viz",
-      "description": "A simple viz that shows a custom tooltip on hover",
+      "description": "Interactive product tiles with hover tooltip and modal view",
       "resource": {
         "js": "index.js",
         "css": "index.css"
@@ -18,14 +21,8 @@
       "config": "config.json",
       "data": {
         "dimensions": [
-          { 
-            "id": "name", 
-            "name": "Product Name" 
-          },
-          { 
-            "id": "image", 
-            "name": "Image URL" 
-          }
+          { "id": "name", "name": "Product Name" },
+          { "id": "image", "name": "Image URL" }
         ],
         "metrics": [
           { "id": "price", "name": "Price" },
