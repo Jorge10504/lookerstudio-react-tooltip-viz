@@ -6,6 +6,7 @@
   "supportUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz/issues",
   "packageUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz",
   "version": "1.0.0",
+  "devMode": true,
   "author": {
     "name": "Jorge Rodriguez"
   },
