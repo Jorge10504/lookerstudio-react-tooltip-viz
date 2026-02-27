@@ -8,12 +8,16 @@ export function subscribe(onData) {
       tables: {
         DEFAULT: [
           {
-            label: { value: "Product A" },
-            value: { value: 120 }
+            name: { value: "Product A" },
+            image: { value: "https://images.pexels.com/photos/7897470/pexels-photo-7897470.jpeg?cs=srgb&dl=pexels-frostroomhead-7897470.jpg&fm=jpg" },
+            price: { value: 120 },
+            inventory: { value: 45 }
           },
           {
-            label: { value: "Product B" },
-            value: { value: 300 }
+            name: { value: "Product B" },
+            image: { value: "https://img.freepik.com/premium-photo/white-stage-background-pedestal-podium-product-display-show-product-purple-background-3d_796580-1137.jpg" },
+            price: { value: 300 },
+            inventory: { value: 12 }
           }
         ]
       },

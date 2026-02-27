@@ -5,7 +5,8 @@ import { subscribe } from "./looker-bridge";
 
 function App() {
   const [msg, setMsg] = useState(null);
-  const [hover, setHover] = useState(null); // {x,y,row}
+  const [hover, setHover] = useState(null); // { x, y, product }
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     subscribe(setMsg);
@@ -13,11 +14,11 @@ function App() {
 
   const rows = useMemo(() => {
     if (!msg?.tables?.DEFAULT) return [];
-    const t = msg.tables.DEFAULT;
-    // t is an array of rows, with dimension/metric fields already transformed
-    return t.map((r) => ({
-      label: r.label?.value ?? "",
-      value: r.value?.value ?? ""
+    return msg.tables.DEFAULT.map((r) => ({
+      name: r.name?.value ?? "",
+      image: r.image?.value ?? "",
+      price: r.price?.value ?? "",
+      inventory: r.inventory?.value ?? ""
     }));
   }, [msg]);
 
@@ -26,45 +27,62 @@ function App() {
 
   return (
     <div className="container">
-      <h3 className="title">React Tooltip Viz</h3>
-
-      <div className="list">
+      <div className="grid">
         {rows.map((r, idx) => (
           <div
             key={idx}
-            className="row"
+            className="card"
             onMouseMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
               setHover({
-                x: e.clientX - rect.left + 12,
-                y: e.clientY - rect.top + 12,
-                row: r
+                x: e.clientX + 12,
+                y: e.clientY + 12,
+                product: r
               });
             }}
             onMouseLeave={() => setHover(null)}
+            onClick={() => setSelected(r)}
           >
-            <span>{r.label}</span>
-            <span className="value">{r.value}</span>
-
-            {hover?.row === r && (
-              <div
-                className="tooltip"
-                style={{
-                  left: hover.x,
-                  top: hover.y,
-                  background: bg,
-                  color: fg
-                }}
-              >
-                <div><strong>{r.label}</strong></div>
-                <div>Value: {r.value}</div>
-              </div>
-            )}
+            <img src={r.image} alt={r.name} className="product-image" />
+            <div className="product-name">{r.name}</div>
           </div>
         ))}
       </div>
 
-      {!msg && <div className="hint">Waiting for Looker Studio data…</div>}
+      {/* FLOATING TOOLTIP (outside cards) */}
+      {hover && !selected && (
+        <div
+          className="tooltip-floating"
+          style={{
+            left: hover.x,
+            top: hover.y,
+            background: bg,
+            color: fg
+          }}
+        >
+          <div><strong>{hover.product.name}</strong></div>
+          <div>💲 Price: ${hover.product.price}</div>
+          <div>📦 Stock: {hover.product.inventory}</div>
+        </div>
+      )}
+
+      {/* MODAL */}
+      {selected && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-btn" onClick={() => setSelected(null)}>
+              ✕
+            </button>
+            <img src={selected.image} alt={selected.name} />
+            <h2>{selected.name}</h2>
+            <p><strong>Price:</strong> ${selected.price}</p>
+            <p><strong>Inventory:</strong> {selected.inventory}</p>
+            <p>
+              <strong>Status:</strong>{" "}
+              {selected.inventory > 20 ? "In Stock" : "Low Stock"}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
