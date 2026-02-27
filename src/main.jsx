@@ -24,6 +24,16 @@ function App() {
     }));
   }, [msg]);
 
+  if (!msg) return <div style={{ padding: 12 }}>Waiting for Looker data...</div>;
+  if (!rows.length) {
+    return (
+      <pre style={{ padding: 12, fontSize: 12, whiteSpace: "pre-wrap" }}>
+        No rows received. Message keys: {JSON.stringify(Object.keys(msg), null, 2)}
+        {"\n\n"}tables.DEFAULT: {JSON.stringify(msg?.tables?.DEFAULT, null, 2)}
+      </pre>
+    );
+  }
+
   const bg = msg?.style?.tooltip?.bgColor?.value ?? "#111";
   const fg = msg?.style?.tooltip?.textColor?.value ?? "#fff";
 
