@@ -1,9 +1,38 @@
-/* global dscc */
-export function subscribe(onData) {
-  if (typeof dscc === "undefined") {
-    console.warn("Mock mode enabled (running outside Looker Studio)");
+let dsccRef = null;
 
-    // Mock data for local dev
+function loadDscc() {
+  return new Promise((resolve, reject) => {
+    // If already loaded
+    if (window.dscc) return resolve(window.dscc);
+
+    // Inject the DSCC script
+    const script = document.createElement("script");
+    script.src = "https://www.gstatic.com/datastudio/visualization/dscc.min.js";
+    script.async = true;
+
+    script.onload = () => {
+      if (!window.dscc) return reject(new Error("DSCC loaded but window.dscc missing"));
+      resolve(window.dscc);
+    };
+
+    script.onerror = () => reject(new Error("Failed to load dscc.min.js"));
+
+    document.head.appendChild(script);
+  });
+}
+
+export async function subscribe(onData) {
+  try {
+    dsccRef = await loadDscc();
+
+    dsccRef.subscribeToData(
+      (message) => onData(message),
+      { transform: dsccRef.objectTransform }
+    );
+  } catch (err) {
+    console.warn("DSCC not available. Using mock data.", err);
+
+    // Mock only as fallback (and optional)
     onData({
       tables: {
         DEFAULT: [
@@ -28,12 +57,5 @@ export function subscribe(onData) {
         }
       }
     });
-
-    return;
   }
-
-  dscc.subscribeToData(
-    (message) => onData(message),
-    { transform: dscc.objectTransform }
-  );
 }

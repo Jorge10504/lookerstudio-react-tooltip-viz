@@ -9,8 +9,10 @@ function App() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    subscribe(setMsg);
-  }, []);
+  (async () => {
+    await subscribe(setMsg);
+  })();
+}, []);
 
   const rows = useMemo(() => {
     if (!msg?.tables?.DEFAULT) return [];
