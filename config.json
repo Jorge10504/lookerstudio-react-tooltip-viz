@@ -1,4 +1,26 @@
 {
+  "data": {
+    "dimensions": [
+      {
+        "id": "name",
+        "name": "Product Name"
+      },
+      {
+        "id": "image",
+        "name": "Image URL"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "price",
+        "name": "Price"
+      },
+      {
+        "id": "inventory",
+        "name": "Inventory"
+      }
+    ]
+  },
   "style": {
     "sections": [
       {

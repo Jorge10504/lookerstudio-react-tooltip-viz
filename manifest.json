@@ -1,35 +1,22 @@
 {
-  "name": "React Tooltip Viz",
-  "organization": "Jorge",
-  "description": "Product tiles with floating tooltip and modal",
-  "logoUrl": "https://www.gstatic.com/images/branding/product/1x/looker_studio_48dp.png",
-  "supportUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz/issues",
-  "packageUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz",
-  "version": "1.0.0",
-  "devMode": true,
-  "author": {
-    "name": "Jorge Rodriguez"
+  "dataStudio": {
+    "name": "React Tooltip Viz",
+    "company": "Jorge",
+    "logoUrl": "https://www.gstatic.com/images/branding/product/1x/looker_studio_48dp.png",
+    "addonUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz",
+    "supportUrl": "https://github.com/Jorge10504/lookerstudio-react-tooltip-viz/issues",
+    "description": "Interactive product tiles with hover tooltip and modal view"
   },
+  "devMode": true,
   "components": [
     {
       "id": "reactTooltipViz",
       "name": "React Tooltip Viz",
-      "description": "Interactive product tiles with hover tooltip and modal view",
       "resource": {
         "js": "index.js",
         "css": "index.css"
       },
-      "config": "config.json",
-      "data": {
-        "dimensions": [
-          { "id": "name", "name": "Product Name" },
-          { "id": "image", "name": "Image URL" }
-        ],
-        "metrics": [
-          { "id": "price", "name": "Price" },
-          { "id": "inventory", "name": "Inventory" }
-        ]
-      }
+      "config": "config.json"
     }
   ]
 }
