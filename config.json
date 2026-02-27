@@ -1,64 +1,63 @@
 {
-  "data": {
-    "dimensionGroups": [
-      {
-        "id": "products",
-        "label": "Products",
-        "min": 1,
-        "max": 2,
-        "fields": [
-          {
-            "id": "name",
-            "name": "Product Name"
-          },
-          {
-            "id": "image",
-            "name": "Image URL"
+  "data": [
+    {
+      "id": "data",
+      "label": "Data",
+      "elements": [
+        {
+          "id": "products",
+          "label": "Products",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 2,
+            "supportedTypes": ["DEFAULT"]
           }
-        ]
-      }
-    ],
-    "metricGroups": [
-      {
-        "id": "metrics",
-        "label": "Metrics",
-        "min": 0,
-        "max": 2,
-        "fields": [
-          {
-            "id": "price",
-            "name": "Price",
-            "type": "NUMBER"
-          },
-          {
-            "id": "inventory",
-            "name": "Inventory",
-            "type": "NUMBER"
+        },
+        {
+          "id": "metrics",
+          "label": "Metrics",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 2
           }
-        ]
-      }
-    ]
-  },
-  "style": {
-    "sections": [
-      {
-        "name": "tooltip",
-        "displayName": "Tooltip",
-        "properties": [
-          {
-            "name": "bgColor",
-            "displayName": "Background color",
-            "type": "COLOR",
-            "defaultValue": "#111111"
-          },
-          {
-            "name": "textColor",
-            "displayName": "Text color",
-            "type": "COLOR",
-            "defaultValue": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "style": [
+    {
+      "id": "tooltip",
+      "label": "Tooltip",
+      "elements": [
+        {
+          "id": "bgColor",
+          "label": "Background color",
+          "type": "FILL_COLOR",
+          "defaultValue": {
+            "color": "#111111",
+            "opacity": 1
           }
-        ]
-      }
-    ]
+        },
+        {
+          "id": "textColor",
+          "label": "Text color",
+          "type": "FONT_COLOR",
+          "defaultValue": {
+            "color": "#ffffff"
+          }
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interactions",
+      "supportedActions": ["FILTER"]
+    }
+  ],
+  "features": {
+    "enableComparisonDateRange": false
   }
 }
