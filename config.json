@@ -1,23 +1,41 @@
 {
   "data": {
-    "dimensions": [
+    "dimensionGroups": [
       {
-        "id": "name",
-        "name": "Product Name"
-      },
-      {
-        "id": "image",
-        "name": "Image URL"
+        "id": "products",
+        "label": "Products",
+        "min": 1,
+        "max": 2,
+        "fields": [
+          {
+            "id": "name",
+            "name": "Product Name"
+          },
+          {
+            "id": "image",
+            "name": "Image URL"
+          }
+        ]
       }
     ],
-    "metrics": [
+    "metricGroups": [
       {
-        "id": "price",
-        "name": "Price"
-      },
-      {
-        "id": "inventory",
-        "name": "Inventory"
+        "id": "metrics",
+        "label": "Metrics",
+        "min": 0,
+        "max": 2,
+        "fields": [
+          {
+            "id": "price",
+            "name": "Price",
+            "type": "NUMBER"
+          },
+          {
+            "id": "inventory",
+            "name": "Inventory",
+            "type": "NUMBER"
+          }
+        ]
       }
     ]
   },
