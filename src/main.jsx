@@ -25,6 +25,9 @@ function App() {
   const bg = msg?.style?.tooltip?.bgColor?.value ?? "#111";
   const fg = msg?.style?.tooltip?.textColor?.value ?? "#fff";
 
+  if (!msg) return <div style={{ padding: 12 }}>Waiting for data…</div>;
+  if (!rows.length) return <div style={{ padding: 12 }}>No rows received.</div>;
+
   return (
     <div className="container">
       <div className="grid">
@@ -87,4 +90,23 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+// ---- Ensure mount point exists inside Looker Studio iframe ----
+let mount = document.getElementById("root");
+
+if (!mount) {
+  mount = document.createElement("div");
+  mount.id = "root";
+
+  // Make sure it fills the iframe
+  mount.style.width = "100%";
+  mount.style.height = "100%";
+
+  document.body.style.margin = "0";
+  document.body.style.width = "100%";
+  document.body.style.height = "100%";
+
+  document.body.appendChild(mount);
+}
+
+// Mount React
+ReactDOM.createRoot(mount).render(<App />);
