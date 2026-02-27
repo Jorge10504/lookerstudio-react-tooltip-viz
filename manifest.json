@@ -8,7 +8,7 @@
   "devMode": true,
   "components": [
     {
-      "id": "reactTooltipViz",
+      "id": "reactTooltipVizV2",
       "name": "React Tooltip Viz",
       "description": "Interactive product tiles with hover tooltip and modal view",
       "resource": {
