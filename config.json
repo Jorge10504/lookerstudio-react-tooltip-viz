@@ -2,25 +2,75 @@
   "data": [
     {
       "id": "data",
-      "label": "Data",
+      "label": "Product Information",
       "elements": [
         {
-          "id": "products",
-          "label": "Products",
+          "id": "name",
+          "label": "Product Name",
           "type": "DIMENSION",
           "options": {
             "min": 1,
-            "max": 2,
-            "supportedTypes": ["DEFAULT"]
+            "max": 1
           }
         },
         {
-          "id": "metrics",
-          "label": "Metrics",
+          "id": "category",
+          "label": "Category",
+          "type": "DIMENSION",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "image",
+          "label": "Image URL",
+          "type": "DIMENSION",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "metrics",
+      "label": "Metrics",
+      "elements": [
+        {
+          "id": "price",
+          "label": "Price",
           "type": "METRIC",
           "options": {
             "min": 0,
-            "max": 2
+            "max": 1
+          }
+        },
+        {
+          "id": "stock",
+          "label": "Stock",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "sales",
+          "label": "Sales",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "ranking",
+          "label": "Ranking",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
           }
         }
       ]
@@ -47,6 +97,27 @@
           "defaultValue": {
             "color": "#ffffff"
           }
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "label": "Cards",
+      "elements": [
+        {
+          "id": "cardBg",
+          "label": "Card Background",
+          "type": "FILL_COLOR",
+          "defaultValue": {
+            "color": "#ffffff",
+            "opacity": 1
+          }
+        },
+        {
+          "id": "cardRadius",
+          "label": "Card Border Radius",
+          "type": "NUMBER",
+          "defaultValue": 14
         }
       ]
     }
