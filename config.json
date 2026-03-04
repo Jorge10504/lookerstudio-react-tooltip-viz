@@ -2,7 +2,7 @@
   "data": [
     {
       "id": "data",
-      "label": "Product Information",
+      "label": "Data",
       "elements": [
         {
           "id": "name",
