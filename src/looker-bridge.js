@@ -25,17 +25,30 @@ function loadDsccScript() {
 
 export async function subscribe(onData) {
   try {
+
+    // If running inside Looker Studio
+    if (window.dscc) {
+      window.dscc.subscribeToData(
+        (message) => {
+          console.log("Looker Studio message:", message);
+          onData(message);
+        },
+        { transform: window.dscc.objectTransform }
+      );
+      return;
+    }
+
+    // Otherwise load DSCC (local dev)
     const dscc = await loadDsccScript();
 
-    // ✅ Real Looker Studio data
     dscc.subscribeToData(
       (message) => onData(message),
       { transform: dscc.objectTransform }
     );
+
   } catch (err) {
     console.warn("Falling back to mock mode:", err);
 
-    // Mock data for local dev
     onData({
       tables: {
         DEFAULT: [
@@ -56,15 +69,9 @@ export async function subscribe(onData) {
             inventory: { value: 12 },
             sales: { value: 50210 },
             ranking: { value: 5 }
-          },
-        ],
-      },
-      style: {
-        tooltip: {
-          bgColor: { value: "#111111" },
-          textColor: { value: "#ffffff" },
-        },
-      },
+          }
+        ]
+      }
     });
   }
 }
